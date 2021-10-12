@@ -1,6 +1,6 @@
 ---
 - name: Add a user
-  hosts: 10.224.3.185
+  hosts: all
   
   tasks:
   - name: Add User
