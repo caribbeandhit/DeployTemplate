@@ -5,6 +5,6 @@
     tasks:
       - name: Add User
         win_user:
-          name: "{{ morpheus['instance']['hostname'] }}"
+          name: "test"
           password: "12345"
           state: present
