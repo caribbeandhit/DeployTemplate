@@ -4,8 +4,15 @@
   hosts: all 
   gather_facts: false
   connection: local
-  vars_files: 
-    RHEL8.3_multiple_vms.yml
+  vars: 
+    vcenter_hostname: 10.224.3.233
+    username: svc_morpheus
+    password: m0rph3usP@ssw0rd123
+    vmtemplate: RHEL-8.3-Template
+    vmcluster: "{{ morpheus['customOptions]['selectCloud'] }}"
+    vmnetwork: "{{ morpheus['customOptions]['network'] }}" 
+    servers:
+      - test19_01
   tasks: 
   - name: Clone multiple VMs from template
     local_action:
