@@ -1,0 +1,25 @@
+---
+
+- name: Cloning multiple VMs from Template at Vcenter "{{ vcenter_hostname }}"
+  hosts: all 
+  gather_facts: false
+  connection: local
+  vars_files: 
+    RHEL8.3_multiple_vms.yml
+  tasks: 
+  - name: Clone multiple VMs from template
+    local_action:
+      module: vmware_guest
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      validate_certs: no      
+      template: "{{ vmtemplate }}"
+      name: "{{ item }}"
+      cluster: "{{ vmcluster }}"
+      state: poweredon
+      networks:
+       - name: "{{ vmnetwork }}"
+      wait_for_ip_address: true
+      wait_for_ip_address_timeout: 600
+    with_items: "{{ servers }}"
