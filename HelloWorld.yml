@@ -1,8 +1,7 @@
 ---
 # This playbook prints a simple debug message
 - name: Echo 
-  hosts: all
-  connection: local
+  hosts: webservers
 
   tasks:
   - name: Print debug message
