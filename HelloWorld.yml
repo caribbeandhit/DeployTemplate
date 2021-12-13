@@ -1,6 +1,7 @@
 ---
 # This playbook prints a simple debug message
-- name: Echo 
+- name: Echo
+  become: true
   hosts: webservers
 
   tasks:
