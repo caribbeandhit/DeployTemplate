@@ -9,8 +9,8 @@
     datastore: Temp Datastore
  
   tasks:
-  name: Read CSV file
-  - read_csv:
+  - name: Read CSV file
+    read_csv:
       path: /data.csv
     register: data
 
