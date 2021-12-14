@@ -13,3 +13,5 @@
   - debug: 
       msg: "{{ data.Name }} ---- {{ data.Template }}"
     loop: "{{ data.list }}"
+    loop_control:
+      loop_var: data 
