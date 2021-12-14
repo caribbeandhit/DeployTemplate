@@ -15,10 +15,6 @@
       path: /data.csv
     register: data
 
-- name: Create a VM from a template
-  hosts: localhost
-  connection: local
-  gather_facts: no
   tasks:
   - name: Clone the template
     vmware_guest:
