@@ -1,6 +1,7 @@
 ---
 - name: Create a VMs 
-  hosts: 10.224.3.224
+  hosts: localhost
+  connection: local
   gather_facts: false
   vars: 
     vcenter_hostname: is00esx016.iaas01.local
