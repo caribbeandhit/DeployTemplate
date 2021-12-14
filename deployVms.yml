@@ -20,10 +20,13 @@
       hostname: "{{ vcenter_hostname }}"
       username: "{{ username }}"
       password: "{{ password }}"
-      validate_certs: no      
+      name: "{{ data.Name }}"
+      validate_certs: False      
       template: "{{ data.Template }}"
       datastore: "{{ datastore }}"
       state: poweredon
+      wait_for_ip_address: no
     loop: "{{ data.list }}"
     loop_control:
       loop_var: data
+      
