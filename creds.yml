@@ -1,6 +1,6 @@
 
 ---
-vcenter_hostname: 
+vcenter_hostname: is00esx016.iaas01.local
 username: administrator
 password: P@ssw0rd
 datastore: Temp Datastore
