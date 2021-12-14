@@ -4,6 +4,7 @@
 
   gather_facts: false
   vars: 
+    ansible_python_interpreter: /bin/python3
     vcenter_ip: 10.224.3.223
     username: administrator@iaas01.sso.local
     password: P@ssw0rd
