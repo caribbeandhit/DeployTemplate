@@ -9,22 +9,27 @@
     password: P@ssw0rd
     datastore: Temp Datastore
  
+  tasks:
+  - name: Read CSV file
+    read_csv:
+      path: /data.csv
+    register: data
 
-  tasks: 
-  - name: Deploy multiple VMs from template
+- name: Create a VM from a template
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+  - name: Clone the template
     vmware_guest:
-      datacenter: Management DC
-      cluster: Management Cluster
-      hostname: "{{ vcenter_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
-      name: "{{ data.Name }}"
-      validate_certs: False      
-      template: "{{ data.Template }}"
-      datastore: "{{ datastore }}"
+      hostname: 192.0.2.44
+      username: administrator@vsphere.local
+      password: vmware
+      validate_certs: False
+      name: testvm_2
+      template: template_el7
+      datacenter: DC1
+      folder: /DC1/vm
       state: poweredon
-      wait_for_ip_address: no
-    loop: "{{ data.list }}"
-    loop_control:
-      loop_var: data
+      wait_for_ip_address: yes
       
