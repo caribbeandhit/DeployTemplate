@@ -10,8 +10,15 @@
       path: /data.csv
     register: data
 
-  - debug: 
-      msg: "{{ data.Name }} ---- {{ data.Template }}"
-    loop: "{{ data.list }}"
-    loop_control:
-      loop_var: data 
+  tasks: 
+  - name: Deploy multiple VMs from template
+    local_action:
+      module: vmware_guest
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      validate_certs: no      
+      template: "{{ data.Template }}"
+      datastore: "{{ datastore }}"
+      state: poweredon
+    with_items: "{{ data.Name }}"
