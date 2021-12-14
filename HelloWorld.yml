@@ -1,9 +1,9 @@
 ---
 # This playbook prints a simple debug message
 - name: Echo
-  hosts: webservers
   become: true
-  
+  hosts: all
+
   tasks:
   - name: Print debug message
     debug:
