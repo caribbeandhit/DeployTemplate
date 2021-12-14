@@ -2,8 +2,11 @@
 - name: Create a VMs 
   hosts: 10.224.3.224
   gather_facts: false
-  vars_files: 
-    creds.yml
+  vars: 
+    vcenter_hostname: is00esx016.iaas01.local
+    username: administrator
+    password: P@ssw0rd
+    datastore: Temp Datastore
  
   tasks:
   - read_csv:
@@ -22,3 +25,4 @@
       datastore: "{{ datastore }}"
       state: poweredon
     with_items: "{{ data.Name }}"
+    loop: "{{ data.list }}"
