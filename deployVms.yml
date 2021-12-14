@@ -4,7 +4,7 @@
 
   gather_facts: false
   vars: 
-    vcenter_hostname: is00esx016.iaas01.local
+    vcenter_ip: 10.224.3.223
     username: administrator
     password: P@ssw0rd
     datastore: Temp Datastore
@@ -19,13 +19,13 @@
   - name: Clone the template
     vmware_guest:
       hostname: "{{ vcenter_ip }}"
-      username: "{{ vcenter_username }}"
-      password: "{{ vcenter_password }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
       validate_certs: False
       name: testvm_2
-      template: template_el7
-      datacenter: "{{ datacenter_name }}"
+      template: WIN-2019-Template
+      datacenter: "{{ Management DC }}"
       folder: /DC1/vm
       state: poweredon
-      cluster: "{{ cluster_name }}"
+      cluster: "{{ Management Cluster }}"
       wait_for_ip_address: yes
