@@ -1,5 +1,5 @@
 ---
-- name: Create a new VMs: 
+- name: Create a new VMs 
   hosts: 10.224.3.224
   gather_facts: false
   vars_files: 
