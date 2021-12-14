@@ -5,7 +5,7 @@
   gather_facts: false
   vars: 
     vcenter_ip: 10.224.3.223
-    username: administrator
+    username: administrator@iaas01.sso.local
     password: P@ssw0rd
     datastore: Temp Datastore
  
@@ -24,8 +24,8 @@
       validate_certs: False
       name: testvm_2
       template: WinSvr2016Std-BaseImage
-      datacenter: "{{ Management DC }}"
+      datacenter: Management DC
       folder: 
       state: poweredon
-      cluster: "{{ Management Cluster }}"
+      cluster: Management Cluster
       wait_for_ip_address: yes
