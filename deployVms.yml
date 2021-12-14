@@ -1,32 +1,34 @@
 ---
-
-- name: Cloning multiple VMs from Template at Vcenter "{{ vcenter_hostname }}"
-  hosts: all 
+- name: Create a new VM and customize : 
+  hosts: localhost 
   gather_facts: false
-  connection: local
-  vars: 
-    vcenter_hostname: 10.224.3.233
-    username: svc_morpheus
-    password: m0rph3usP@ssw0rd123
-    vmtemplate: RHEL-8.3-Template
-    vmcluster: "{{ morpheus['customOptions]['selectCloud'] }}"
-    vmnetwork: "{{ morpheus['customOptions]['network'] }}" 
-    servers:
-      - test19_01
+  vars_files: 
+    creds.yml
   tasks: 
   - name: Clone multiple VMs from template
-    local_action:
+     local_action:
       module: vmware_guest
-      hostname: "{{ vcenter_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
-      validate_certs: no      
-      template: "{{ vmtemplate }}"
-      name: "{{ item }}"
-      cluster: "{{ vmcluster }}"
-      state: poweredon
-      networks:
-       - name: "{{ vmnetwork }}"
-      wait_for_ip_address: true
-      wait_for_ip_address_timeout: 600
-    with_items: "{{ servers }}"
+        hostname: "{{ vcenter_hostname }}" 
+        username: "{{ vcenter_username }}" 
+        password: "{{ vcenter_password }}" 
+        folder: testansible 
+        name: win19test01 
+        state: poweredon guest_id: windows9Server64Guest 
+        esxi_hostname: "{{ esxi_hostname }}" 
+        disk: 
+        - size_gb: 60
+          type: thin
+          datastore: DS01
+       hardware:
+         memory_mb: 4096
+         num_cpus: 4
+         scsi: paravirtual
+       networks:
+       - name: VM Network
+         mac: aa:bb:dd:aa:00:14
+         ip: 10.1.149.50
+         netmask: 255.255.255.0
+         device_type: vmxnet3
+       wait_for_ip_address: true
+       wait_for_ip_address_timeout: 600
+       with_items: "{{ servers }}"      
