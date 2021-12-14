@@ -1,6 +1,6 @@
 ---
 - name: Create a VMs 
-  hosts: 10.224.3.223
+  hosts: localhost
   connection: local
   gather_facts: false
   vars: 
