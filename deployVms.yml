@@ -7,7 +7,7 @@
  
   tasks:
   - read_csv:
-      path: csvlist.csv
+      path: /data.csv
     register: data
 
   - debug: 
