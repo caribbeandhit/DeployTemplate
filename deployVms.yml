@@ -9,11 +9,6 @@
     password: P@ssw0rd
     datastore: Temp Datastore
  
-  tasks:
-  - name: Read CSV file
-    read_csv:
-      path: /data.csv
-    register: data
 
   tasks: 
   - name: Deploy multiple VMs from template
