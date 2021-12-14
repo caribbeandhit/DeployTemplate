@@ -9,6 +9,7 @@
     datastore: Temp Datastore
  
   tasks:
+  name: Read CSV file
   - read_csv:
       path: /data.csv
     register: data
@@ -23,7 +24,6 @@
       template: "{{ data.Template }}"
       datastore: "{{ datastore }}"
       state: poweredon
-    with_items: "{{ data.Name }}"
     loop: "{{ data.list }}"
     loop_control:
       loop_var: data
