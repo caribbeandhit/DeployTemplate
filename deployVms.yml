@@ -16,7 +16,9 @@
 
   tasks: 
   - name: Deploy multiple VMs from template
-    vmware_guest: 
+    vmware_guest:
+      datacenter: Management DC
+      cluster: Management Cluster
       hostname: "{{ vcenter_hostname }}"
       username: "{{ username }}"
       password: "{{ password }}"
