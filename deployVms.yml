@@ -1,7 +1,7 @@
 ---
-- name: Create a VMs 
+- name: Create a VM from a template 
   hosts: localhost
-  connection: local
+
   gather_facts: false
   vars: 
     vcenter_hostname: is00esx016.iaas01.local
@@ -18,14 +18,14 @@
   tasks:
   - name: Clone the template
     vmware_guest:
-      hostname: 192.0.2.44
-      username: administrator@vsphere.local
-      password: vmware
+      hostname: "{{ vcenter_ip }}"
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}"
       validate_certs: False
       name: testvm_2
       template: template_el7
-      datacenter: DC1
+      datacenter: "{{ datacenter_name }}"
       folder: /DC1/vm
       state: poweredon
+      cluster: "{{ cluster_name }}"
       wait_for_ip_address: yes
-      
