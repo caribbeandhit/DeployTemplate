@@ -26,3 +26,5 @@
       state: poweredon
     with_items: "{{ data.Name }}"
     loop: "{{ data.list }}"
+    loop_control:
+      loop_var: data
