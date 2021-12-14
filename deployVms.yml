@@ -1,5 +1,5 @@
 ---
-- name: Create a new VM and customize : 
+- name: Create a new VMs: 
   hosts: localhost 
   gather_facts: false
   vars_files: 
@@ -22,13 +22,5 @@
        hardware:
          memory_mb: 4096
          num_cpus: 4
-         scsi: paravirtual
-       networks:
-       - name: VM Network
-         mac: aa:bb:dd:aa:00:14
-         ip: 10.1.149.50
-         netmask: 255.255.255.0
-         device_type: vmxnet3
-       wait_for_ip_address: true
-       wait_for_ip_address_timeout: 600
+       wait_for_ip_address: false 
        with_items: "{{ servers }}"      
