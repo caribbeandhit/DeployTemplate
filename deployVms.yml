@@ -23,9 +23,9 @@
       password: "{{ password }}"
       validate_certs: False
       name: testvm_2
-      template: WIN-2019-Template
+      template: WinSvr2016Std-BaseImage
       datacenter: "{{ Management DC }}"
-      folder: /DC1/vm
+      folder: 
       state: poweredon
       cluster: "{{ Management Cluster }}"
       wait_for_ip_address: yes
