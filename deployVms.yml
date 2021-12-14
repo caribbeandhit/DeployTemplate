@@ -7,9 +7,9 @@
  
   tasks:
   - read_csv:
-      path: /csvlist.csv
-    register: userlist
+      path: csvlist.csv
+    register: data
 
   - debug: 
-      msg: "{{ Name }} ---- {{ Template }}"
-    loop: "{{ userlist.list }}"
+      msg: "{{ data.Name }} ---- {{ data.Template }}"
+    loop: "{{ data.list }}"
