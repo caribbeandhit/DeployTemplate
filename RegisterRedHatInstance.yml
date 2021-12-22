@@ -1,0 +1,15 @@
+---
+- name: Setting up an httpd web services
+  hosts: all
+  gather_facts: false
+  
+  tasks:
+  - name: Register Server.
+    redhat_subscription:
+      state: present
+      username: nigel.charles@fujitsu.com 
+      password: Trinidad11!
+      autosubscribe: true
+
+  - name: Reboot the machine with all defaults using Ansible
+    reboot:
