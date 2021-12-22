@@ -5,6 +5,7 @@
   become_user: root
   become_method: su
   gather_facts: false
+  connection: local
   
   tasks:
   - name: Install apache packages 
