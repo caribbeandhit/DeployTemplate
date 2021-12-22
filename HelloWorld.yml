@@ -2,6 +2,9 @@
 # This playbook prints a simple debug message
 - name: Echo
   hosts: all
+  become: yes
+  become_user: root
+  become_method: su
 
   tasks:
   - name: Print debug message
