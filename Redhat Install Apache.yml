@@ -1,7 +1,10 @@
 ---
 - name: Setting up an httpd web ervices
   hosts: all
-  connection: local
+  become: yes
+  become_user: root
+  become_method: su
+  gather_facts: false
   
   
   tasks:
