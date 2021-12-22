@@ -8,10 +8,12 @@
     dnf:
       name: httpd
       state: latest
+      
   - name: Enable service to start on boot up
     service:
       name: httpd
       state: started
+      
   - name: Create firewall rule for apache service
     firewalld:
       service: http
@@ -19,6 +21,7 @@
       permanent: yes
       immediate: yes
       state: enabled
+      
   handlers:
   - name: Restart apache service
     service:
