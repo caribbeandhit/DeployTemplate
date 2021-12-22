@@ -1,5 +1,5 @@
 ---
-- name: Setting up an httpd web ervices
+- name: Setting up an httpd web services
   hosts: all
   become: yes
   become_user: root
