@@ -8,20 +8,23 @@
   connection: local
   
   tasks:
-  - name: Install apache packages 
-    yum:
+  - name: Apache latest version installation
+    dnf:
       name: httpd
-      state: present
-  - name: ensure httpd is running
+      state: latest
+  - name: Enable service to start on boot up
     service:
-      name: httpd 
+      name: httpd
       state: started
-  - name: Open port 80 for http access
+  - name: Create firewall rule for apache service
     firewalld:
       service: http
-      permanent: true
+      zone: public
+      permanent: yes
+      immediate: yes
       state: enabled
-  - name: Restart the firewalld service to load in the firewall changes
-    service: 
-      name: firewalld 
+  handlers:
+  - name: Restart apache service
+    service:
+      name: httpd
       state: restarted
