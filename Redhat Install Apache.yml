@@ -5,7 +5,7 @@
   
   tasks:
   - name: Apache latest version installation
-    dnf:
+    yum:
       name: httpd
       state: latest
   - name: Enable service to start on boot up
