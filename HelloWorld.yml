@@ -1,11 +1,12 @@
 ---
 # This playbook prints a simple debug message
 - name: Echo
-  hosts: all
+  hosts: localhost
   become: yes
   become_user: root
   become_method: su
   gather_facts: false
+  connection: local
 
   tasks:
   - name: Print debug message
